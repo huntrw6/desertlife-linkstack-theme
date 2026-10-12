@@ -168,9 +168,17 @@ button:hover,
   background-color: rgba(15, 23, 42, 0.82);
 }
 
-/* Homepage button: dark glass with a diagonal red-to-orange gradient border.
-   The ring is a gradient layer masked down to a 2px outline, so the
-   see-through fill doesn't show the gradient behind it. */
+/* Animatable angle for the homepage button's gradient ring. Browsers without
+   @property keep the static 135deg ring (135deg and 495deg look the same). */
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 135deg;
+}
+
+/* Homepage button: dark glass with a red-to-orange gradient border that
+   slowly rotates around the button. The ring is a gradient layer masked
+   down to a 2px outline, so the see-through fill doesn't show it. */
 .button.button-website,
 .button.button-custom_website {
   background: rgba(15, 23, 42, 0.62);
@@ -184,10 +192,21 @@ button:hover,
   padding: 2px;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(135deg, rgba(207, 50, 40, 0.82), rgba(250, 160, 42, 0.82));
+  --ring-angle: 135deg;
+  background: linear-gradient(var(--ring-angle), #cf3228, #faa02a);
+  animation: ring-rotate 8s linear infinite;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+@keyframes ring-rotate {
+  to { --ring-angle: 495deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button.button-website::before,
+  .button.button-custom_website::before {
+    animation: none;
+  }
 }
 
 .button.button-web:hover,
