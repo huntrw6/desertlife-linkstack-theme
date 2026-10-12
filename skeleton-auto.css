@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap");
+
+/* DesertLife — LinkStack theme
+   A warm desert sunrise theme
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Palette
+- Grid
+- Base Styles
+- Typography
+- Links
+- Code
+- Spacing
+- Utilities
+- Misc
+- Credit footer
+
+*/
+
+
+/* Palette
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --desert-orange: #faa02a;
+  --desert-orange-light: #fbb355;
+  --desert-orange-dark: #c88022;
+  --desert-red: #cf3228;
+  --desert-red-light: #d95b53;
+  --desert-red-dark: #a62820;
+  --desert-navy: #0f172a;
+  --desert-navy-dark: #0c1322;
+  --desert-navy-light: #3f4655;
+  --desert-cream: #fff9f0;
+  --desert-cream-light: #fffbf3;
+  --desert-cream-dark: #ccc8c0;
+
+  --desert-heading-font: "Poppins", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --desert-body-font: "Work Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* The page always sits on the dark sunrise image, so one scheme
+     works for both light and dark mode. */
+  --desert-bg: var(--desert-navy);
+  --desert-text: var(--desert-cream);
+  --desert-title: #ffffff;
+  --desert-muted: #ece6db;
+  --desert-link: var(--desert-orange-light);
+  --desert-link-hover: var(--desert-orange);
+  --desert-surface: #1b2438;
+  --desert-border: rgba(255, 249, 240, 0.12);
+  --desert-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+  box-sizing: border-box; }
+.column {
+  position: center;
+  width: 100%;
+  float: center;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 0; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+}
+
+
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+  font-size: 100%; }
+
+body {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  font-family: var(--desert-body-font);
+  color: var(--desert-text);
+  background-color: var(--desert-bg);
+  /* Bundled theme background (a background uploaded in Studio overrides it) */
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat; }
+
+
+/* Pinned background layer: re-draws whatever background the body has
+   (theme glow or a user-uploaded image) on a fixed, viewport-sized layer.
+   iOS Safari ignores background-attachment: fixed, which otherwise
+   stretches uploaded images over the whole page height. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+/* Readability scrim: darkens the sky behind the name/description,
+   fading to clear lower down so the desert stays visible. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(15, 23, 42, 0.42) 0%,
+    rgba(15, 23, 42, 0.24) 35%,
+    rgba(15, 23, 42, 0.06) 70%,
+    rgba(15, 23, 42, 0) 100%); }
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--desert-heading-font);
+  color: var(--desert-text); }
+
+h1 {
+  color: var(--desert-title);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  padding-top: 16px; }
+
+/* Orange-to-red accent bar under the page name */
+h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--desert-orange), var(--desert-red)); }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h1 { font-size: 44px; }
+}
+
+p {
+  margin-top: 0;
+  color: var(--desert-muted);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
+
+
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a {
+  color: var(--desert-link);
+  text-decoration: none;
+  font-weight: 500; }
+a:hover {
+  color: var(--desert-link-hover); }
+
+.spacing {
+  padding: 0 10px; }
+
+.social-icon {
+  color: var(--desert-text); }
+.social-icon:hover {
+  color: var(--desert-orange); }
+
+
+/* Code
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: var(--desert-surface);
+  border: 1px solid var(--desert-border);
+  border-radius: 7.5px; }
+pre > code {
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre; }
+
+
+/* Spacing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+p,
+ol {
+  margin-bottom: 2.5rem; }
+
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+
+
+/* Misc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid var(--desert-border); }
+
+::selection {
+  background: var(--desert-orange);
+  color: var(--desert-navy); }
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--desert-orange) var(--desert-bg); }
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px; }
+*::-webkit-scrollbar-track {
+  background: var(--desert-bg); }
+*::-webkit-scrollbar-thumb {
+  background-color: var(--desert-orange);
+  border-radius: 30px;
+  border: 3px none #ffffff; }
+
+
+/* Credit footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.credit-txt {
+  font-family: var(--desert-heading-font);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none; }
+
+.credit-txt-clr {
+  color: var(--desert-text) !important; }
+
+
+/* Social icons, contact buttons and text blocks below the buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* LinkStack renders the icon row before the buttons; a flex column lets
+   CSS move it after them (and keep the footer last) without custom code. */
+.column {
+  display: flex;
+  flex-direction: column; }
+.column > #avatar {
+  align-self: center; }
+.column > .social-icon-div {
+  order: 1;
+  padding-top: 8px;
+  padding-bottom: 24px; }
+/* Email, phone & save-contact (vCard) buttons go below the social icons */
+.column > .button-entrance:has(> a[href^="mailto:"]),
+.column > .button-entrance:has(> a[href^="tel:"]),
+.column > .button-entrance:has(> a[href*="/vcard/"]) {
+  order: 2; }
+/* Text blocks go below the contact buttons (heading blocks hold an <h2>
+   instead of a <span>, so they stay where they are) */
+.column > div.fadein:has(> span) {
+  order: 3;
+  padding: 0 4px;
+  margin-bottom: 12px;
+  line-height: 1.35;
+  color: var(--desert-muted);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
+/* Keep multi-line text (e.g. an address) tight: honor plain-text line
+   breaks, and drop the big paragraph gaps the rich-text editor adds */
+.column > div.fadein > span {
+  white-space: pre-line; }
+.column > div.fadein > span p {
+  margin: 0; }
+.column > div.fadein > span p,
+.column > div.fadein > span li {
+  line-height: inherit; }
+.column > .container {
+  order: 4; }
