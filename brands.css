@@ -52,8 +52,9 @@ button {
   outline: none;
   border: none;
   border-radius: 50px;
-  /* White ring for contrast against the background image */
-  box-shadow: inset 0 0 0 2px #ffffff, 0 6px 18px rgba(0, 0, 0, 0.30);
+  /* Thin light ring for contrast against the background image
+     (same as the contact buttons) */
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.75), 0 6px 18px rgba(0, 0, 0, 0.30);
   cursor: pointer;
  }
 /* Frosted glass: brand colors below are slightly see-through (alpha 0.82)
@@ -67,7 +68,7 @@ button {
 /* animations.css resets box-shadow on .button-hover, so restate the ring
    with higher specificity (Website buttons override it further down). */
 .button.button-hover {
-  box-shadow: inset 0 0 0 2px #ffffff, 0 6px 18px rgba(0, 0, 0, 0.30);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.75), 0 6px 18px rgba(0, 0, 0, 0.30);
 }
 button:hover,
 .button:focus {
